@@ -1,0 +1,30 @@
+version: v1.0
+name: Initial Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: 'Block #1'
+    task:
+      jobs:
+        - name: Lint
+          commands:
+            - yarn workspace api lint
+        - name: unit test
+          commands:
+            - yarn workspace api start &
+            - sleep 5
+            - yarn workspace api test
+            - killall node
+    dependencies: []
+  - name: 'Block #2'
+    dependencies: []
+    task:
+      jobs:
+        - name: Lint
+          commands:
+            - yarn workspace web lint
+        - name: unit test
+          commands:
+            - yarn workspace web test
