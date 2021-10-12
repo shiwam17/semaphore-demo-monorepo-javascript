@@ -32,7 +32,7 @@ blocks:
             - yarn workspace web lint
         - name: unit test
           commands:
-            - yarn workspace web test
+            - yarn workspace web dev
       prologue:
         commands:
           - checkout
