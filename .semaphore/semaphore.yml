@@ -5,7 +5,7 @@ agent:
     type: e1-standard-2
     os_image: ubuntu2004
 blocks:
-  - name: 'Block #1'
+  - name: api service
     task:
       jobs:
         - name: Lint
@@ -23,7 +23,7 @@ blocks:
           - sem-version node 15.14
           - yarn install
     dependencies: []
-  - name: 'Block #2'
+  - name: Web app
     dependencies: []
     task:
       jobs:
